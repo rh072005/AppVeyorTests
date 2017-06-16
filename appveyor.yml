@@ -7,13 +7,16 @@ image:
 build_script: 
   - ps: .\build.ps1
 
+after_build:
+  - ps: $env:IS_PRERELEASE = if($env:APPVEYOR_REPO_TAG_NAME.split('-')[1].length -gt 0){true}else{false}
+
 deploy:
   - provider: GitHub
     description: Test Release
     auth_token:
       secure: jFME4ETvhv3jB3k7HcfCjuDK7ucI2SxW267nDooCTIGNyOVtmamBRBK6qq9X8fwq
     draft: false
-    prerelease: true
+    prerelease: %IS_PRERELEASE%
     on:
       branch: master
       appveyor_repo_tag: true
