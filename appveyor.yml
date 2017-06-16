@@ -16,7 +16,7 @@ deploy:
     auth_token:
       secure: jFME4ETvhv3jB3k7HcfCjuDK7ucI2SxW267nDooCTIGNyOVtmamBRBK6qq9X8fwq
     draft: false
-    prerelease: %IS_PRERELEASE%
+    prerelease: $(IS_PRERELEASE)
     on:
       branch: master
       appveyor_repo_tag: true
