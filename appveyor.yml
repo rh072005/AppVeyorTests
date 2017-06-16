@@ -1,0 +1,18 @@
+init:
+  - git config --global core.autocrlf input
+  
+image: 
+  - Visual Studio 2017
+
+deploy:
+  - provider: GitHub
+    description: Test Release
+    auth_token:
+      secure: jFME4ETvhv3jB3k7HcfCjuDK7ucI2SxW267nDooCTIGNyOVtmamBRBK6qq9X8fwq
+    draft: false
+    prerelease: true
+    on:
+      branch: master
+      appveyor_repo_tag: true
+
+test: off
