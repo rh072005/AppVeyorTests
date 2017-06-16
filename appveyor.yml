@@ -8,7 +8,7 @@ build_script:
   - ps: .\build.ps1
 
 after_build:
-  - ps: $env:IS_PRERELEASE = (if($env:APPVEYOR_REPO_TAG_NAME -and $env:APPVEYOR_REPO_TAG_NAME.split('-')[1].length -gt 0){$true}else{$false})
+  - ps: $env:IS_PRERELEASE = if($env:APPVEYOR_REPO_TAG_NAME -and $env:APPVEYOR_REPO_TAG_NAME.split('-')[1].length -gt 0){$true}else{$false}
 
 deploy:
   - provider: GitHub
